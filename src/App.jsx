@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [form, setForm] = useState({
@@ -7,6 +7,12 @@ export default function App() {
     service: "",
     message: "",
   });
+
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(true);
+  }, []);
 
   const sendTelegram = async (e) => {
     e.preventDefault();
@@ -20,7 +26,9 @@ export default function App() {
 💬 Nachricht: ${form.message}
 `;
 
-    const token = "8971729060:AAE9F9uJ1Y4Vf0jSJtF0tN7DGJ_ZRj0lQ-4";
+    const token =
+      "8971729060:AAE9F9uJ1Y4Vf0jSJtF0tN7DGJ_ZRj0lQ-4";
+
     const chatId = "5333830175";
 
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -48,9 +56,14 @@ export default function App() {
 
   return (
     <div style={styles.page}>
+      {/* BACKGROUND */}
+      <div style={styles.backgroundGlow}></div>
+
       {/* NAVBAR */}
       <nav style={styles.navbar}>
-        <h2 style={styles.logo}>Taskline Munich UG</h2>
+        <h2 style={styles.logo}>
+          Taskline Munich UG
+        </h2>
 
         <div style={styles.navLinks}>
           <a href="#services" style={styles.link}>
@@ -69,102 +82,144 @@ export default function App() {
 
       {/* HERO */}
       <section style={styles.hero}>
-        <div style={styles.overlay}></div>
+        <div
+          style={{
+            ...styles.heroContent,
+            opacity: visible ? 1 : 0,
+            transform: visible
+              ? "translateY(0)"
+              : "translateY(50px)",
+          }}
+        >
+          <div style={styles.glassCard}>
+            <div style={styles.truck}>
+              🚚
+            </div>
 
-        <div style={styles.heroContent}>
-          <h1 style={styles.title}>
-            Taskline Munich UG
-          </h1>
+            <h1 style={styles.title}>
+              Taskline Munich UG
+            </h1>
 
-          <h2 style={styles.subtitle}>
-            Professioneller Umzugsservice in ganz Deutschland
-          </h2>
+            <h2 style={styles.subtitle}>
+              Premium Umzugsservice in ganz
+              Deutschland
+            </h2>
 
-          <p style={styles.description}>
-            Schnell • Sicher • Stressfrei • Modern
-          </p>
+            <p style={styles.description}>
+              Schnell • Sicher • Modern •
+              Stressfrei
+            </p>
 
-          <div style={styles.buttonBox}>
-            <a href="#contact" style={styles.orangeBtn}>
-              Kostenloses Angebot
-            </a>
+            <div style={styles.buttonBox}>
+              <a
+                href="#contact"
+                style={styles.orangeBtn}
+              >
+                Kostenloses Angebot
+              </a>
 
-            <a href="tel:+4917612345678" style={styles.whiteBtn}>
-              Jetzt anrufen
-            </a>
+              <a
+                href="tel:+4917612345678"
+                style={styles.whiteBtn}
+              >
+                Jetzt anrufen
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="services" style={styles.services}>
+      <section
+        id="services"
+        style={styles.services}
+      >
         <h2 style={styles.sectionTitle}>
           Unsere Leistungen
         </h2>
 
         <div style={styles.grid}>
           <div style={styles.card}>
-            <div style={styles.icon}>🚚</div>
+            <div style={styles.icon}>
+              🚛
+            </div>
 
             <h3>Wohnungsumzug</h3>
 
             <p>
-              Professionelle Umzüge ohne Stress.
+              Professioneller Transport Ihrer
+              Möbel in ganz Deutschland.
             </p>
           </div>
 
           <div style={styles.card}>
-            <div style={styles.icon}>🏢</div>
+            <div style={styles.icon}>
+              🏢
+            </div>
 
             <h3>Büroumzug</h3>
 
             <p>
-              Schneller und moderner Firmenumzug.
+              Schnelle Firmenumzüge ohne
+              Zeitverlust.
             </p>
           </div>
 
           <div style={styles.card}>
-            <div style={styles.icon}>🛠</div>
+            <div style={styles.icon}>
+              🛠
+            </div>
 
             <h3>Möbelmontage</h3>
 
             <p>
-              Abbau und Aufbau Ihrer Möbel.
+              Abbau und Aufbau Ihrer Möbel
+              durch Experten.
             </p>
           </div>
 
           <div style={styles.card}>
-            <div style={styles.icon}>🧹</div>
+            <div style={styles.icon}>
+              🧹
+            </div>
 
             <h3>Entrümpelung</h3>
 
             <p>
-              Schnell und sauber entrümpeln.
+              Schnelle Reinigung und
+              Entrümpelung.
             </p>
           </div>
         </div>
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" style={styles.reviewSection}>
+      <section
+        id="reviews"
+        style={styles.reviewSection}
+      >
         <h2 style={styles.sectionTitle}>
           Kundenbewertungen
         </h2>
 
         <div style={styles.grid}>
           <div style={styles.reviewCard}>
-            <div style={styles.stars}>★★★★★</div>
+            <div style={styles.stars}>
+              ★★★★★
+            </div>
 
             <p>
-              Sehr professionell und pünktlich.
-              Alles perfekt.
+              Sehr professionell und
+              pünktlich. Alles perfekt.
             </p>
 
             <h4>— Michael B.</h4>
           </div>
 
           <div style={styles.reviewCard}>
-            <div style={styles.stars}>★★★★★</div>
+            <div style={styles.stars}>
+              ★★★★★
+            </div>
 
             <p>
               Beste Umzugsfirma in München.
@@ -174,7 +229,9 @@ export default function App() {
           </div>
 
           <div style={styles.reviewCard}>
-            <div style={styles.stars}>★★★★★</div>
+            <div style={styles.stars}>
+              ★★★★★
+            </div>
 
             <p>
               Modernes Team und fairer Preis.
@@ -188,7 +245,9 @@ export default function App() {
       {/* ADDRESS */}
       <section style={styles.addressSection}>
         <div style={styles.addressCard}>
-          <div style={styles.addressIcon}>📍</div>
+          <div style={styles.addressIcon}>
+            📍
+          </div>
 
           <h2 style={styles.addressTitle}>
             Unsere Adresse
@@ -201,7 +260,10 @@ export default function App() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" style={styles.contact}>
+      <section
+        id="contact"
+        style={styles.contact}
+      >
         <h2 style={styles.sectionTitle}>
           Kontaktformular
         </h2>
@@ -213,6 +275,8 @@ export default function App() {
           <input
             type="text"
             placeholder="Name"
+            required
+            style={styles.input}
             value={form.name}
             onChange={(e) =>
               setForm({
@@ -220,13 +284,13 @@ export default function App() {
                 name: e.target.value,
               })
             }
-            style={styles.input}
-            required
           />
 
           <input
             type="text"
             placeholder="Telefon"
+            required
+            style={styles.input}
             value={form.phone}
             onChange={(e) =>
               setForm({
@@ -234,13 +298,12 @@ export default function App() {
                 phone: e.target.value,
               })
             }
-            style={styles.input}
-            required
           />
 
           <input
             type="text"
             placeholder="Service"
+            style={styles.input}
             value={form.service}
             onChange={(e) =>
               setForm({
@@ -248,11 +311,11 @@ export default function App() {
                 service: e.target.value,
               })
             }
-            style={styles.input}
           />
 
           <textarea
             placeholder="Nachricht"
+            style={styles.textarea}
             value={form.message}
             onChange={(e) =>
               setForm({
@@ -260,7 +323,6 @@ export default function App() {
                 message: e.target.value,
               })
             }
-            style={styles.textarea}
           />
 
           <button style={styles.submitBtn}>
@@ -279,19 +341,32 @@ const styles = {
     minHeight: "100vh",
     fontFamily: "Arial",
     overflowX: "hidden",
+    position: "relative",
+  },
+
+  backgroundGlow: {
+    position: "fixed",
+    width: "700px",
+    height: "700px",
+    background:
+      "radial-gradient(circle,#f9731630,transparent)",
+    top: "-200px",
+    left: "-200px",
+    filter: "blur(100px)",
+    zIndex: 0,
+    animation: "pulse 6s infinite",
   },
 
   navbar: {
     position: "fixed",
-    width: "100%",
     top: 0,
-    left: 0,
+    width: "100%",
+    padding: "20px 5%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "20px 5%",
-    background: "rgba(0,0,0,0.6)",
-    backdropFilter: "blur(10px)",
+    background: "rgba(0,0,0,0.5)",
+    backdropFilter: "blur(15px)",
     zIndex: 1000,
     boxSizing: "border-box",
   },
@@ -299,11 +374,12 @@ const styles = {
   logo: {
     color: "#f97316",
     fontSize: "28px",
+    fontWeight: "bold",
   },
 
   navLinks: {
     display: "flex",
-    gap: "30px",
+    gap: "25px",
     flexWrap: "wrap",
   },
 
@@ -318,66 +394,75 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    padding: "120px 20px",
     textAlign: "center",
-    padding: "120px 20px 80px",
-    position: "relative",
-    background:
-      "linear-gradient(to bottom right,#0f172a,#1e293b)",
-  },
-
-  overlay: {
-    position: "absolute",
-    inset: 0,
-    background:
-      "radial-gradient(circle,#f9731620,transparent)",
   },
 
   heroContent: {
+    transition: "1.5s",
     position: "relative",
-    zIndex: 10,
-    maxWidth: "900px",
-    width: "100%",
+    zIndex: 2,
+  },
+
+  glassCard: {
+    background: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    padding: "60px 40px",
+    borderRadius: "35px",
+    backdropFilter: "blur(20px)",
+    boxShadow:
+      "0 0 60px rgba(249,115,22,0.2)",
+    maxWidth: "950px",
+  },
+
+  truck: {
+    fontSize: "80px",
+    animation: "float 3s infinite ease-in-out",
+    marginBottom: "20px",
   },
 
   title: {
-    fontSize: "clamp(42px,8vw,90px)",
+    fontSize: "clamp(50px,8vw,95px)",
     color: "#f97316",
     marginBottom: "20px",
+    fontWeight: "900",
   },
 
   subtitle: {
-    fontSize: "clamp(28px,4vw,50px)",
-    lineHeight: "1.2",
+    fontSize: "clamp(28px,4vw,55px)",
     marginBottom: "20px",
+    lineHeight: "1.2",
   },
 
   description: {
-    fontSize: "20px",
     color: "#cbd5e1",
+    fontSize: "20px",
     marginBottom: "40px",
   },
 
   buttonBox: {
     display: "flex",
-    gap: "20px",
     justifyContent: "center",
+    gap: "20px",
     flexWrap: "wrap",
   },
 
   orangeBtn: {
     background: "#f97316",
-    color: "white",
     padding: "18px 35px",
     borderRadius: "15px",
+    color: "white",
     textDecoration: "none",
     fontWeight: "bold",
+    boxShadow:
+      "0 0 25px rgba(249,115,22,0.5)",
   },
 
   whiteBtn: {
     border: "2px solid white",
-    color: "white",
     padding: "18px 35px",
     borderRadius: "15px",
+    color: "white",
     textDecoration: "none",
     fontWeight: "bold",
   },
@@ -407,7 +492,8 @@ const styles = {
     padding: "40px",
     borderRadius: "25px",
     textAlign: "center",
-    transition: "0.3s",
+    transition: "0.4s",
+    cursor: "pointer",
   },
 
   icon: {
@@ -494,5 +580,41 @@ const styles = {
     borderRadius: "12px",
     fontSize: "20px",
     cursor: "pointer",
+    boxShadow:
+      "0 0 25px rgba(249,115,22,0.4)",
   },
 };
+
+const style = document.createElement("style");
+
+style.innerHTML = `
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+`;
+
+document.head.appendChild(style);
