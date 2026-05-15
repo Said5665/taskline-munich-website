@@ -1,69 +1,22 @@
-# Full Premium App.jsx
-
-Полностью замени содержимое `src/App.jsx` этим кодом:
-
-```jsx
-import { useEffect, useState } from "react";
+import React from "react";
 
 export default function App() {
-  const [visible, setVisible] = useState(false);
-
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-
-  useEffect(() => {
-    setVisible(true);
-  }, []);
-
-  const sendWhatsApp = (e) => {
-    e.preventDefault();
-
-    const message = `
-🚚 Neue Anfrage von Taskline Munich UG
-
-👤 Name: ${form.name}
-📞 Telefon: ${form.phone}
-🛠 Service: ${form.service}
-💬 Nachricht: ${form.message}
-`;
-
-    const phone = "4917612345678";
-
-    const url =
-      `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank");
-
-    setForm({
-      name: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
-  };
-
   return (
     <div style={styles.page}>
-      <div style={styles.backgroundGlow}></div>
-
       <a
         href="https://wa.me/4917612345678"
         target="_blank"
-        style={styles.floatingWhatsapp}
+        style={styles.whatsapp}
       >
         💬
       </a>
 
       <nav style={styles.navbar}>
-        <h2 style={styles.logo}>
+        <h1 style={styles.logo}>
           Taskline Munich UG
-        </h2>
+        </h1>
 
-        <div style={styles.navLinks}>
+        <div style={styles.links}>
           <a href="#services" style={styles.link}>
             Leistungen
           </a>
@@ -79,294 +32,128 @@ export default function App() {
       </nav>
 
       <section style={styles.hero}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={styles.videoBg}
-        >
-          <source
-            src="https://www.w3schools.com/howto/rain.mp4"
-            type="video/mp4"
-          />
-        </video>
+        <div style={styles.overlay}></div>
 
-        <div style={styles.darkOverlay}></div>
+        <div style={styles.heroBox}>
+          <div style={styles.truck}>🚚</div>
 
-        <div
-          style={{
-            ...styles.heroContent,
-            opacity: visible ? 1 : 0,
-            transform: visible
-              ? "translateY(0px)"
-              : "translateY(60px)",
-          }}
-        >
-          <div style={styles.glassCard}>
-            <div style={styles.truck}>
-              🚚
-            </div>
+          <h1 style={styles.title}>
+            Premium Umzugsservice
+          </h1>
 
-            <h1 style={styles.title}>
-              Taskline Munich UG
-            </h1>
+          <h2 style={styles.subtitle}>
+            Taskline Munich UG
+          </h2>
 
-            <h2 style={styles.subtitle}>
-              Premium Umzugsservice in Deutschland
-            </h2>
+          <p style={styles.description}>
+            Professionelle Umzüge in ganz Deutschland.
+            Schnell • Sicher • Premium.
+          </p>
 
-            <p style={styles.description}>
-              Schnell • Sicher • Stressfrei • 24/7
-            </p>
+          <div style={styles.buttons}>
+            <a href="#contact" style={styles.primaryBtn}>
+              Kostenloses Angebot
+            </a>
 
-            <div style={styles.buttonBox}>
-              <a
-                href="#contact"
-                style={styles.orangeBtn}
-              >
-                Kostenloses Angebot
-              </a>
-
-              <a
-                href="https://wa.me/4917612345678"
-                style={styles.whiteBtn}
-                target="_blank"
-              >
-                WhatsApp
-              </a>
-            </div>
+            <a
+              href="https://wa.me/4917612345678"
+              style={styles.secondaryBtn}
+              target="_blank"
+            >
+              WhatsApp
+            </a>
           </div>
         </div>
       </section>
 
-      <section style={styles.statsSection}>
-        <div style={styles.statsGrid}>
-          <div style={styles.statCard}>
-            <h2 style={styles.statNumber}>500+</h2>
-            <p>Zufriedene Kunden</p>
-          </div>
-
-          <div style={styles.statCard}>
-            <h2 style={styles.statNumber}>24/7</h2>
-            <p>Support</p>
-          </div>
-
-          <div style={styles.statCard}>
-            <h2 style={styles.statNumber}>100%</h2>
-            <p>Sicherer Transport</p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="services"
-        style={styles.services}
-      >
+      <section id="services" style={styles.section}>
         <h2 style={styles.sectionTitle}>
           Unsere Leistungen
         </h2>
 
         <div style={styles.grid}>
           <div style={styles.card}>
-            <div style={styles.icon}>🚛</div>
+            <div style={styles.icon}>🏠</div>
             <h3>Wohnungsumzug</h3>
-            <p>
-              Professioneller Transport Ihrer
-              Möbel.
-            </p>
+            <p>Professioneller privater Umzug.</p>
           </div>
 
           <div style={styles.card}>
             <div style={styles.icon}>🏢</div>
             <h3>Büroumzug</h3>
-            <p>
-              Moderner Firmenumzug ohne Stress.
-            </p>
+            <p>Schnelle Firmenumzüge.</p>
           </div>
 
           <div style={styles.card}>
-            <div style={styles.icon}>🛠</div>
-            <h3>Möbelmontage</h3>
-            <p>
-              Aufbau und Abbau Ihrer Möbel.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <div style={styles.icon}>🧹</div>
-            <h3>Entrümpelung</h3>
-            <p>
-              Schnell und sauber entrümpeln.
-            </p>
+            <div style={styles.icon}>🛡️</div>
+            <h3>Versicherung</h3>
+            <p>Ihr Umzug ist geschützt.</p>
           </div>
         </div>
       </section>
 
-      <section style={styles.whySection}>
+      <section style={styles.sectionDark}>
         <h2 style={styles.sectionTitle}>
-          Warum Taskline Munich?
+          Warum wir?
         </h2>
 
         <div style={styles.grid}>
           <div style={styles.card}>
-            <div style={styles.icon}>🛡️</div>
-            <h3>Versichert</h3>
-            <p>
-              Ihr Umzug ist vollständig
-              versichert.
-            </p>
+            <div style={styles.icon}>⭐</div>
+            <h3>Premium Qualität</h3>
           </div>
 
           <div style={styles.card}>
             <div style={styles.icon}>⏱️</div>
-            <h3>Pünktlich</h3>
-            <p>
-              Immer rechtzeitig und zuverlässig.
-            </p>
+            <h3>Pünktlichkeit</h3>
           </div>
 
           <div style={styles.card}>
-            <div style={styles.icon}>💶</div>
-            <h3>Festpreis</h3>
-            <p>
-              Keine versteckten Kosten.
-            </p>
+            <div style={styles.icon}>🚚</div>
+            <h3>Deutschlandweit</h3>
           </div>
         </div>
       </section>
 
-      <section
-        id="reviews"
-        style={styles.reviewSection}
-      >
+      <section id="reviews" style={styles.section}>
         <h2 style={styles.sectionTitle}>
           Kundenbewertungen
         </h2>
 
         <div style={styles.grid}>
-          <div style={styles.reviewCard}>
-            <div style={styles.stars}>
-              ★★★★★
-            </div>
-
+          <div style={styles.card}>
+            <h3>★★★★★</h3>
             <p>
-              Sehr professionell und pünktlich.
+              Sehr professionell und freundlich.
             </p>
-
-            <h4>— Michael B.</h4>
           </div>
 
-          <div style={styles.reviewCard}>
-            <div style={styles.stars}>
-              ★★★★★
-            </div>
-
+          <div style={styles.card}>
+            <h3>★★★★★</h3>
             <p>
               Beste Umzugsfirma in München.
             </p>
-
-            <h4>— Sarah K.</h4>
           </div>
 
-          <div style={styles.reviewCard}>
-            <div style={styles.stars}>
-              ★★★★★
-            </div>
-
+          <div style={styles.card}>
+            <h3>★★★★★</h3>
             <p>
-              Modernes Team und fairer Preis.
+              Schnell und zuverlässig.
             </p>
-
-            <h4>— Daniel M.</h4>
           </div>
         </div>
       </section>
 
-      <section style={styles.addressSection}>
-        <div style={styles.addressCard}>
-          <div style={styles.addressIcon}>
-            📍
-          </div>
-
-          <h2 style={styles.addressTitle}>
-            Unsere Adresse
-          </h2>
-
-          <p>München, Deutschland</p>
-          <p>Mo - Sa : 08:00 - 20:00</p>
-        </div>
-      </section>
-
-      <section
-        id="contact"
-        style={styles.contact}
-      >
+      <section id="contact" style={styles.sectionDark}>
         <h2 style={styles.sectionTitle}>
-          Kontaktformular
+          Kontakt
         </h2>
 
-        <form
-          onSubmit={sendWhatsApp}
-          style={styles.form}
-        >
-          <input
-            type="text"
-            placeholder="Name"
-            style={styles.input}
-            required
-            value={form.name}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                name: e.target.value,
-              })
-            }
-          />
-
-          <input
-            type="text"
-            placeholder="Telefon"
-            style={styles.input}
-            required
-            value={form.phone}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                phone: e.target.value,
-              })
-            }
-          />
-
-          <input
-            type="text"
-            placeholder="Service"
-            style={styles.input}
-            value={form.service}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                service: e.target.value,
-              })
-            }
-          />
-
-          <textarea
-            placeholder="Nachricht"
-            style={styles.textarea}
-            value={form.message}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                message: e.target.value,
-              })
-            }
-          />
-
-          <button style={styles.submitBtn}>
-            Anfrage senden
-          </button>
-        </form>
+        <div style={styles.contactBox}>
+          <p>📍 München, Deutschland</p>
+          <p>📞 +49 176 12345678</p>
+          <p>✉️ info@taskline-munich.de</p>
+        </div>
       </section>
     </div>
   );
@@ -374,34 +161,173 @@ export default function App() {
 
 const styles = {
   page: {
-    background:
-      "linear-gradient(to bottom,#020617,#0f172a)",
-    color: "white",
+    background: "#0b1120",
+    color: "#f8fafc",
     minHeight: "100vh",
-    fontFamily: "Arial",
+    fontFamily: "Inter, Arial",
     overflowX: "hidden",
+  },
+
+  navbar: {
+    position: "fixed",
+    top: 0,
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "22px 6vw",
+    background: "rgba(10,15,30,0.75)",
+    backdropFilter: "blur(18px)",
+    zIndex: 999,
+    boxSizing: "border-box",
+    flexWrap: "wrap",
+  },
+
+  logo: {
+    color: "#c4a574",
+    fontSize: "clamp(24px,2vw,36px)",
+  },
+
+  links: {
+    display: "flex",
+    gap: "25px",
+    flexWrap: "wrap",
+  },
+
+  link: {
+    color: "white",
+    textDecoration: "none",
+  },
+
+  hero: {
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "150px 5vw 100px",
     position: "relative",
-  },
-
-  backgroundGlow: {
-    position: "fixed",
-    width: "50vw",
-    height: "50vw",
+    textAlign: "center",
     background:
-      "radial-gradient(circle,#f9731640,transparent)",
-    top: "-15vw",
-    left: "-15vw",
-    filter: "blur(120px)",
-    zIndex: 0,
-    animation: "pulse 8s infinite",
+      "linear-gradient(to bottom right,#0b1120,#111827)",
   },
 
-  floatingWhatsapp: {
+  overlay: {
+    position: "absolute",
+    inset: 0,
+    background:
+      "radial-gradient(circle,#c4a57422,transparent)",
+  },
+
+  heroBox: {
+    position: "relative",
+    zIndex: 2,
+    background: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    padding: "clamp(35px,5vw,80px)",
+    borderRadius: "40px",
+    maxWidth: "1200px",
+    width: "100%",
+    backdropFilter: "blur(25px)",
+  },
+
+  truck: {
+    fontSize: "80px",
+    marginBottom: "20px",
+  },
+
+  title: {
+    fontSize: "clamp(40px,7vw,100px)",
+    color: "#c4a574",
+    lineHeight: 1,
+  },
+
+  subtitle: {
+    fontSize: "clamp(24px,3vw,54px)",
+    marginTop: "20px",
+  },
+
+  description: {
+    color: "#cbd5e1",
+    marginTop: "25px",
+    fontSize: "18px",
+  },
+
+  buttons: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+    marginTop: "40px",
+    flexWrap: "wrap",
+  },
+
+  primaryBtn: {
+    background: "#c4a574",
+    color: "#0b1120",
+    padding: "18px 34px",
+    borderRadius: "16px",
+    textDecoration: "none",
+    fontWeight: "700",
+  },
+
+  secondaryBtn: {
+    border: "1px solid rgba(255,255,255,0.25)",
+    color: "white",
+    padding: "18px 34px",
+    borderRadius: "16px",
+    textDecoration: "none",
+  },
+
+  section: {
+    padding: "110px 5vw",
+  },
+
+  sectionDark: {
+    padding: "110px 5vw",
+    background: "#111827",
+  },
+
+  sectionTitle: {
+    textAlign: "center",
+    color: "#c4a574",
+    fontSize: "clamp(32px,5vw,65px)",
+    marginBottom: "60px",
+  },
+
+  grid: {
+    display: "grid",
+    gridTemplateColumns:
+      "repeat(auto-fit,minmax(280px,1fr))",
+    gap: "30px",
+    maxWidth: "1400px",
+    margin: "0 auto",
+  },
+
+  card: {
+    background: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: "28px",
+    padding: "40px",
+    backdropFilter: "blur(18px)",
+    transition: "0.4s",
+  },
+
+  icon: {
+    fontSize: "55px",
+    marginBottom: "20px",
+  },
+
+  contactBox: {
+    textAlign: "center",
+    lineHeight: 2,
+    fontSize: "20px",
+  },
+
+  whatsapp: {
     position: "fixed",
-    right: "20px",
-    bottom: "20px",
-    width: "70px",
-    height: "70px",
+    right: "24px",
+    bottom: "24px",
+    width: "72px",
+    height: "72px",
     borderRadius: "50%",
     background: "#25D366",
     color: "white",
@@ -409,72 +335,8 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     textDecoration: "none",
-    fontSize: "35px",
+    fontSize: "34px",
     zIndex: 9999,
-    boxShadow:
-      "0 0 30px rgba(37,211,102,0.5)",
-    animation: "pulseWhatsapp 2s infinite",
   },
 };
-
-const style = document.createElement("style");
-
-style.innerHTML = `
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  overflow-x:hidden;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-12px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes pulseWhatsapp {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-`;
-
-document.head.appendChild(style);
+```
