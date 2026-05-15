@@ -86,8 +86,8 @@ export default function App() {
             ...styles.heroContent,
             opacity: visible ? 1 : 0,
             transform: visible
-              ? "translateY(0)"
-              : "translateY(50px)",
+              ? "translateY(0px)"
+              : "translateY(60px)",
           }}
         >
           <div style={styles.glassCard}>
@@ -340,17 +340,18 @@ const styles = {
     fontFamily: "Arial",
     overflowX: "hidden",
     position: "relative",
+    width: "100%",
   },
 
   backgroundGlow: {
     position: "fixed",
-    width: "900px",
-    height: "900px",
+    width: "50vw",
+    height: "50vw",
     background:
       "radial-gradient(circle,#f9731640,transparent)",
-    top: "-300px",
-    left: "-300px",
-    filter: "blur(140px)",
+    top: "-15vw",
+    left: "-15vw",
+    filter: "blur(120px)",
     zIndex: 0,
     animation: "pulse 8s infinite",
   },
@@ -359,11 +360,11 @@ const styles = {
     position: "fixed",
     top: 0,
     width: "100%",
-    padding: "25px 5%",
+    padding: "20px 5vw",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    background: "rgba(0,0,0,0.5)",
+    background: "rgba(0,0,0,0.45)",
     backdropFilter: "blur(20px)",
     zIndex: 1000,
     boxSizing: "border-box",
@@ -373,20 +374,21 @@ const styles = {
 
   logo: {
     color: "#f97316",
-    fontSize: "32px",
+    fontSize: "clamp(20px,2vw,36px)",
     fontWeight: "900",
   },
 
   navLinks: {
     display: "flex",
-    gap: "30px",
+    gap: "2vw",
     flexWrap: "wrap",
+    justifyContent: "center",
   },
 
   link: {
     color: "white",
     textDecoration: "none",
-    fontSize: "20px",
+    fontSize: "clamp(14px,1vw,20px)",
   },
 
   hero: {
@@ -394,7 +396,8 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "140px 40px 80px",
+    padding:
+      "clamp(120px,10vw,180px) 4vw 6vw",
     textAlign: "center",
     width: "100%",
     boxSizing: "border-box",
@@ -403,7 +406,7 @@ const styles = {
   heroContent: {
     transition: "1.5s",
     width: "100%",
-    maxWidth: "1700px",
+    maxWidth: "1600px",
     position: "relative",
     zIndex: 2,
     display: "flex",
@@ -413,146 +416,148 @@ const styles = {
   glassCard: {
     background: "rgba(255,255,255,0.05)",
     border: "1px solid rgba(255,255,255,0.1)",
-    padding: "90px 60px",
-    borderRadius: "40px",
+    padding:
+      "clamp(35px,6vw,90px) clamp(20px,4vw,60px)",
+    borderRadius: "35px",
     backdropFilter: "blur(25px)",
     boxShadow:
-      "0 0 80px rgba(249,115,22,0.25)",
+      "0 0 80px rgba(249,115,22,0.2)",
     width: "100%",
     maxWidth: "1400px",
-    minHeight: "500px",
     overflow: "hidden",
     boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
   },
 
   truck: {
-    fontSize: "90px",
+    fontSize: "clamp(50px,6vw,100px)",
     marginBottom: "20px",
     animation:
       "float 3s infinite ease-in-out",
   },
 
   title: {
-    fontSize: "clamp(55px,7vw,120px)",
+    fontSize: "clamp(38px,7vw,120px)",
     color: "#f97316",
     marginBottom: "20px",
     fontWeight: "900",
     lineHeight: "1",
     wordBreak: "break-word",
     textShadow:
-      "0 0 40px rgba(249,115,22,0.8)",
+      "0 0 35px rgba(249,115,22,0.8)",
   },
 
   subtitle: {
-    fontSize: "clamp(28px,3vw,65px)",
-    marginBottom: "25px",
+    fontSize: "clamp(20px,3vw,60px)",
+    marginBottom: "20px",
     lineHeight: "1.2",
     maxWidth: "1000px",
+    marginInline: "auto",
   },
 
   description: {
     color: "#cbd5e1",
-    fontSize: "24px",
-    marginBottom: "50px",
+    fontSize: "clamp(14px,1.5vw,24px)",
+    marginBottom: "40px",
   },
 
   buttonBox: {
     display: "flex",
     justifyContent: "center",
-    gap: "25px",
+    gap: "20px",
     flexWrap: "wrap",
   },
 
   orangeBtn: {
     background: "#f97316",
-    padding: "20px 40px",
-    borderRadius: "18px",
+    padding:
+      "clamp(14px,1.5vw,22px) clamp(20px,3vw,40px)",
+    borderRadius: "16px",
     color: "white",
     textDecoration: "none",
     fontWeight: "bold",
-    fontSize: "20px",
+    fontSize: "clamp(14px,1vw,20px)",
     boxShadow:
-      "0 0 30px rgba(249,115,22,0.5)",
+      "0 0 25px rgba(249,115,22,0.5)",
   },
 
   whiteBtn: {
     border: "2px solid white",
-    padding: "20px 40px",
-    borderRadius: "18px",
+    padding:
+      "clamp(14px,1.5vw,22px) clamp(20px,3vw,40px)",
+    borderRadius: "16px",
     color: "white",
     textDecoration: "none",
     fontWeight: "bold",
-    fontSize: "20px",
+    fontSize: "clamp(14px,1vw,20px)",
   },
 
   services: {
-    padding: "120px 20px",
+    padding: "8vw 4vw",
   },
 
   sectionTitle: {
     textAlign: "center",
-    fontSize: "60px",
-    marginBottom: "70px",
+    fontSize: "clamp(32px,5vw,65px)",
+    marginBottom: "60px",
     color: "#f97316",
   },
 
   grid: {
     display: "grid",
     gridTemplateColumns:
-      "repeat(auto-fit,minmax(280px,1fr))",
-    gap: "35px",
+      "repeat(auto-fit,minmax(260px,1fr))",
+    gap: "30px",
     maxWidth: "1400px",
     margin: "0 auto",
   },
 
   card: {
     background: "#111827",
-    padding: "45px",
+    padding:
+      "clamp(25px,3vw,45px)",
     borderRadius: "30px",
     textAlign: "center",
     transition: "0.4s",
   },
 
   icon: {
-    fontSize: "70px",
-    marginBottom: "25px",
+    fontSize: "clamp(45px,5vw,80px)",
+    marginBottom: "20px",
     animation:
       "float 3s infinite ease-in-out",
   },
 
   reviewSection: {
-    padding: "120px 20px",
+    padding: "8vw 4vw",
     background: "#0f172a",
   },
 
   reviewCard: {
     background: "#111827",
-    padding: "40px",
+    padding:
+      "clamp(25px,3vw,40px)",
     borderRadius: "25px",
     textAlign: "center",
   },
 
   stars: {
     color: "#f97316",
-    fontSize: "32px",
-    marginBottom: "25px",
+    fontSize: "clamp(24px,3vw,36px)",
+    marginBottom: "20px",
     animation:
       "pulseStars 2s infinite",
   },
 
   addressSection: {
-    padding: "120px 20px",
+    padding: "8vw 4vw",
     display: "flex",
     justifyContent: "center",
   },
 
   addressCard: {
     background: "#111827",
-    padding: "60px",
+    padding:
+      "clamp(30px,5vw,60px)",
     borderRadius: "30px",
     textAlign: "center",
     width: "100%",
@@ -560,20 +565,20 @@ const styles = {
   },
 
   addressIcon: {
-    fontSize: "90px",
-    marginBottom: "25px",
+    fontSize: "clamp(50px,6vw,90px)",
+    marginBottom: "20px",
     animation:
       "float 2.5s infinite ease-in-out",
   },
 
   addressTitle: {
-    fontSize: "48px",
-    marginBottom: "25px",
+    fontSize: "clamp(30px,4vw,50px)",
+    marginBottom: "20px",
     color: "#f97316",
   },
 
   contact: {
-    padding: "120px 20px",
+    padding: "8vw 4vw",
   },
 
   form: {
@@ -581,40 +586,57 @@ const styles = {
     margin: "0 auto",
     display: "flex",
     flexDirection: "column",
-    gap: "25px",
+    gap: "20px",
   },
 
   input: {
-    padding: "20px",
-    borderRadius: "15px",
+    padding: "18px",
+    borderRadius: "14px",
     border: "none",
-    fontSize: "20px",
+    fontSize: "16px",
+    width: "100%",
+    boxSizing: "border-box",
   },
 
   textarea: {
-    padding: "20px",
-    borderRadius: "15px",
+    padding: "18px",
+    borderRadius: "14px",
     border: "none",
-    minHeight: "180px",
-    fontSize: "20px",
+    minHeight: "160px",
+    fontSize: "16px",
+    width: "100%",
+    boxSizing: "border-box",
   },
 
   submitBtn: {
     background: "#f97316",
     color: "white",
     border: "none",
-    padding: "20px",
-    borderRadius: "15px",
-    fontSize: "22px",
+    padding: "18px",
+    borderRadius: "14px",
+    fontSize: "18px",
     cursor: "pointer",
-    boxShadow:
-      "0 0 30px rgba(249,115,22,0.4)",
+    width: "100%",
   },
 };
 
 const style = document.createElement("style");
 
 style.innerHTML = `
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overflow-x:hidden;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -655,6 +677,26 @@ style.innerHTML = `
   100% {
     opacity: 0.7;
   }
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 35px rgba(249,115,22,0.4);
+}
+
+.orangeBtn:hover{
+  transform:scale(1.05);
+}
+
+.whiteBtn:hover{
+  background:white;
+  color:black;
+}
+
+input:focus,
+textarea:focus{
+  outline:none;
+  box-shadow:0 0 20px rgba(249,115,22,0.5);
 }
 `;
 
