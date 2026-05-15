@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 export default function App() {
+  const [visible, setVisible] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
     service: "",
     message: "",
   });
-
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     setVisible(true);
@@ -56,7 +56,7 @@ export default function App() {
 
   return (
     <div style={styles.page}>
-      {/* BACKGROUND */}
+      {/* GLOW */}
       <div style={styles.backgroundGlow}></div>
 
       {/* NAVBAR */}
@@ -148,7 +148,7 @@ export default function App() {
 
             <p>
               Professioneller Transport Ihrer
-              Möbel in ganz Deutschland.
+              Möbel.
             </p>
           </div>
 
@@ -160,8 +160,8 @@ export default function App() {
             <h3>Büroumzug</h3>
 
             <p>
-              Schnelle Firmenumzüge ohne
-              Zeitverlust.
+              Moderner Firmenumzug ohne
+              Stress.
             </p>
           </div>
 
@@ -173,8 +173,7 @@ export default function App() {
             <h3>Möbelmontage</h3>
 
             <p>
-              Abbau und Aufbau Ihrer Möbel
-              durch Experten.
+              Aufbau und Abbau Ihrer Möbel.
             </p>
           </div>
 
@@ -186,8 +185,7 @@ export default function App() {
             <h3>Entrümpelung</h3>
 
             <p>
-              Schnelle Reinigung und
-              Entrümpelung.
+              Schnell und sauber entrümpeln.
             </p>
           </div>
         </div>
@@ -210,7 +208,7 @@ export default function App() {
 
             <p>
               Sehr professionell und
-              pünktlich. Alles perfekt.
+              pünktlich.
             </p>
 
             <h4>— Michael B.</h4>
@@ -275,8 +273,8 @@ export default function App() {
           <input
             type="text"
             placeholder="Name"
-            required
             style={styles.input}
+            required
             value={form.name}
             onChange={(e) =>
               setForm({
@@ -289,8 +287,8 @@ export default function App() {
           <input
             type="text"
             placeholder="Telefon"
-            required
             style={styles.input}
+            required
             value={form.phone}
             onChange={(e) =>
               setForm({
@@ -352,7 +350,7 @@ const styles = {
       "radial-gradient(circle,#f9731630,transparent)",
     top: "-200px",
     left: "-200px",
-    filter: "blur(100px)",
+    filter: "blur(120px)",
     zIndex: 0,
     animation: "pulse 6s infinite",
   },
@@ -369,6 +367,8 @@ const styles = {
     backdropFilter: "blur(15px)",
     zIndex: 1000,
     boxSizing: "border-box",
+    flexWrap: "wrap",
+    gap: "15px",
   },
 
   logo: {
@@ -400,6 +400,8 @@ const styles = {
 
   heroContent: {
     transition: "1.5s",
+    width: "100%",
+    maxWidth: "1200px",
     position: "relative",
     zIndex: 2,
   },
@@ -407,31 +409,39 @@ const styles = {
   glassCard: {
     background: "rgba(255,255,255,0.05)",
     border: "1px solid rgba(255,255,255,0.1)",
-    padding: "60px 40px",
+    padding: "60px 25px",
     borderRadius: "35px",
     backdropFilter: "blur(20px)",
     boxShadow:
       "0 0 60px rgba(249,115,22,0.2)",
-    maxWidth: "950px",
+    width: "100%",
+    overflow: "hidden",
+    boxSizing: "border-box",
   },
 
   truck: {
     fontSize: "80px",
-    animation: "float 3s infinite ease-in-out",
     marginBottom: "20px",
+    animation:
+      "float 3s infinite ease-in-out",
   },
 
   title: {
-    fontSize: "clamp(50px,8vw,95px)",
+    fontSize: "clamp(40px,6vw,90px)",
     color: "#f97316",
     marginBottom: "20px",
     fontWeight: "900",
+    lineHeight: "1",
+    wordBreak: "break-word",
+    textShadow:
+      "0 0 25px rgba(249,115,22,0.7)",
   },
 
   subtitle: {
-    fontSize: "clamp(28px,4vw,55px)",
+    fontSize: "clamp(22px,3vw,50px)",
     marginBottom: "20px",
     lineHeight: "1.2",
+    wordBreak: "break-word",
   },
 
   description: {
@@ -456,6 +466,7 @@ const styles = {
     fontWeight: "bold",
     boxShadow:
       "0 0 25px rgba(249,115,22,0.5)",
+    transition: "0.3s",
   },
 
   whiteBtn: {
@@ -497,8 +508,10 @@ const styles = {
   },
 
   icon: {
-    fontSize: "55px",
+    fontSize: "60px",
     marginBottom: "20px",
+    animation:
+      "float 3s infinite ease-in-out",
   },
 
   reviewSection: {
@@ -517,6 +530,8 @@ const styles = {
     color: "#f97316",
     fontSize: "28px",
     marginBottom: "20px",
+    animation:
+      "pulseStars 2s infinite",
   },
 
   addressSection: {
@@ -537,6 +552,8 @@ const styles = {
   addressIcon: {
     fontSize: "70px",
     marginBottom: "20px",
+    animation:
+      "float 2.5s infinite ease-in-out",
   },
 
   addressTitle: {
@@ -594,7 +611,7 @@ style.innerHTML = `
   }
 
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-12px);
   }
 
   100% {
@@ -613,6 +630,20 @@ style.innerHTML = `
 
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes pulseStars {
+  0% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.7;
   }
 }
 `;
