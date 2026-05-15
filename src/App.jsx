@@ -339,4 +339,3 @@ const styles = {
     zIndex: 9999,
   },
 };
-```
