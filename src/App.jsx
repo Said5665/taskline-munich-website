@@ -1,77 +1,64 @@
+import { useState } from "react";
+
 export default function App() {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const sendTelegram = async (e) => {
+    e.preventDefault();
+
+    const text = `
+🚚 Neue Anfrage von Taskline Munich UG
+
+👤 Name: ${form.name}
+📞 Telefon: ${form.phone}
+🛠 Service: ${form.service}
+💬 Nachricht: ${form.message}
+`;
+
+    const token = "8971729060:AAE9F9uJ1Y4Vf0jSJtF0tN7DGJ_ZRj0lQ-4";
+    const chatId = "5333830175";
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text,
+      }),
+    });
+
+    alert("Anfrage gesendet!");
+
+    setForm({
+      name: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
+  };
+
   return (
     <div style={styles.page}>
-      <style>{`
-        *{
-          margin:0;
-          padding:0;
-          box-sizing:border-box;
-        }
-
-        html{
-          scroll-behavior:smooth;
-        }
-
-        body{
-          background:#020617;
-          overflow-x:hidden;
-          font-family:Arial;
-        }
-
-        .card{
-          transition:0.3s;
-        }
-
-        .card:hover{
-          transform:translateY(-10px);
-        }
-
-        .btn{
-          transition:0.3s;
-        }
-
-        .btn:hover{
-          transform:scale(1.05);
-        }
-
-        @media (max-width:768px){
-
-          .nav-links{
-            display:none !important;
-          }
-
-          .hero-buttons{
-            flex-direction:column;
-            width:100%;
-          }
-
-          .hero-buttons button{
-            width:100%;
-          }
-
-          .services-grid{
-            grid-template-columns:1fr !important;
-          }
-
-          .about-grid{
-            grid-template-columns:1fr !important;
-          }
-        }
-      `}</style>
-
       {/* NAVBAR */}
-      <nav style={styles.nav}>
-        <h1 style={styles.logo}>
-          Taskline Munich UG
-        </h1>
+      <nav style={styles.navbar}>
+        <h2 style={styles.logo}>Taskline Munich UG</h2>
 
-        <div className="nav-links" style={styles.navLinks}>
+        <div style={styles.navLinks}>
           <a href="#services" style={styles.link}>
             Leistungen
           </a>
 
-          <a href="#about" style={styles.link}>
-            Über uns
+          <a href="#reviews" style={styles.link}>
+            Bewertungen
           </a>
 
           <a href="#contact" style={styles.link}>
@@ -85,585 +72,427 @@ export default function App() {
         <div style={styles.overlay}></div>
 
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={styles.title}>
             Taskline Munich UG
           </h1>
 
-          <h2 style={styles.heroSubtitle}>
+          <h2 style={styles.subtitle}>
             Professioneller Umzugsservice in ganz Deutschland
           </h2>
 
-          <p style={styles.heroText}>
+          <p style={styles.description}>
             Schnell • Sicher • Stressfrei • Modern
           </p>
 
-          <div
-            className="hero-buttons"
-            style={styles.buttonGroup}
-          >
-            <button
-              className="btn"
-              style={styles.primaryBtn}
-            >
+          <div style={styles.buttonBox}>
+            <a href="#contact" style={styles.orangeBtn}>
               Kostenloses Angebot
-            </button>
+            </a>
 
-            <a href="tel:+4917600000000">
-              <button
-                className="btn"
-                style={styles.secondaryBtn}
-              >
-                Jetzt anrufen
-              </button>
+            <a href="tel:+4917612345678" style={styles.whiteBtn}>
+              Jetzt anrufen
             </a>
           </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section
-        id="services"
-        style={styles.servicesSection}
-      >
+      <section id="services" style={styles.services}>
         <h2 style={styles.sectionTitle}>
           Unsere Leistungen
         </h2>
 
-        <div
-          className="services-grid"
-          style={styles.cards}
-        >
-          {services.map((service, index) => (
-            <div
-              className="card"
-              key={index}
-              style={styles.card}
-            >
-              <div style={styles.icon}>
-                {service.icon}
-              </div>
+        <div style={styles.grid}>
+          <div style={styles.card}>
+            <div style={styles.icon}>🚚</div>
 
-              <h3 style={styles.cardTitle}>
-                {service.title}
-              </h3>
+            <h3>Wohnungsumzug</h3>
 
-              <p style={styles.cardText}>
-                {service.text}
-              </p>
-            </div>
-          ))}
+            <p>
+              Professionelle Umzüge ohne Stress.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <div style={styles.icon}>🏢</div>
+
+            <h3>Büroumzug</h3>
+
+            <p>
+              Schneller und moderner Firmenumzug.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <div style={styles.icon}>🛠</div>
+
+            <h3>Möbelmontage</h3>
+
+            <p>
+              Abbau und Aufbau Ihrer Möbel.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <div style={styles.icon}>🧹</div>
+
+            <h3>Entrümpelung</h3>
+
+            <p>
+              Schnell und sauber entrümpeln.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section
-        id="about"
-        style={styles.aboutSection}
-      >
-        <h2 style={styles.sectionTitleDark}>
-          Wie arbeiten wir?
+      {/* REVIEWS */}
+      <section id="reviews" style={styles.reviewSection}>
+        <h2 style={styles.sectionTitle}>
+          Kundenbewertungen
         </h2>
 
-        <div
-          className="about-grid"
-          style={styles.aboutGrid}
-        >
-          <div style={styles.aboutCard}>
-            <div style={styles.step}>1</div>
+        <div style={styles.grid}>
+          <div style={styles.reviewCard}>
+            <div style={styles.stars}>★★★★★</div>
 
-            <h3 style={styles.aboutTitle}>
-              Anfrage senden
-            </h3>
-
-            <p style={styles.aboutText}>
-              Der Kunde sendet eine Anfrage online
-              oder telefonisch.
+            <p>
+              Sehr professionell und pünktlich.
+              Alles perfekt.
             </p>
+
+            <h4>— Michael B.</h4>
           </div>
 
-          <div style={styles.aboutCard}>
-            <div style={styles.step}>2</div>
+          <div style={styles.reviewCard}>
+            <div style={styles.stars}>★★★★★</div>
 
-            <h3 style={styles.aboutTitle}>
-              Planung
-            </h3>
-
-            <p style={styles.aboutText}>
-              Wir planen den gesamten Umzug
-              professionell.
+            <p>
+              Beste Umzugsfirma in München.
             </p>
+
+            <h4>— Sarah K.</h4>
           </div>
 
-          <div style={styles.aboutCard}>
-            <div style={styles.step}>3</div>
+          <div style={styles.reviewCard}>
+            <div style={styles.stars}>★★★★★</div>
 
-            <h3 style={styles.aboutTitle}>
-              Transport
-            </h3>
-
-            <p style={styles.aboutText}>
-              Sicherer und schneller Transport Ihrer
-              Möbel.
+            <p>
+              Modernes Team und fairer Preis.
             </p>
+
+            <h4>— Daniel M.</h4>
           </div>
+        </div>
+      </section>
+
+      {/* ADDRESS */}
+      <section style={styles.addressSection}>
+        <div style={styles.addressCard}>
+          <div style={styles.addressIcon}>📍</div>
+
+          <h2 style={styles.addressTitle}>
+            Unsere Adresse
+          </h2>
+
+          <p>München, Deutschland</p>
+
+          <p>Mo - Sa : 08:00 - 20:00</p>
         </div>
       </section>
 
       {/* CONTACT */}
-      <section
-        id="contact"
-        style={styles.contactSection}
-      >
-        <div style={styles.contactBox}>
-          <h2 style={styles.contactTitle}>
-            Kontaktieren Sie uns
-          </h2>
+      <section id="contact" style={styles.contact}>
+        <h2 style={styles.sectionTitle}>
+          Kontaktformular
+        </h2>
 
+        <form
+          onSubmit={sendTelegram}
+          style={styles.form}
+        >
           <input
-            placeholder="Ihr Name"
+            type="text"
+            placeholder="Name"
+            value={form.name}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                name: e.target.value,
+              })
+            }
             style={styles.input}
+            required
           />
 
           <input
-            placeholder="Telefonnummer"
+            type="text"
+            placeholder="Telefon"
+            value={form.phone}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                phone: e.target.value,
+              })
+            }
             style={styles.input}
+            required
           />
 
           <input
-            placeholder="E-Mail"
+            type="text"
+            placeholder="Service"
+            value={form.service}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                service: e.target.value,
+              })
+            }
             style={styles.input}
           />
 
           <textarea
-            placeholder="Beschreiben Sie Ihren Umzug"
+            placeholder="Nachricht"
+            value={form.message}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                message: e.target.value,
+              })
+            }
             style={styles.textarea}
           />
 
-          <button
-            className="btn"
-            style={styles.contactBtn}
-            onClick={async () => {
-
-              const TOKEN =
-                '8971729060:AAE9F9uJ1Y4Vf0jSJtF0tN7DGJ_ZRj0lQ-4'
-
-              const CHAT_ID =
-                '5333830175'
-
-              const inputs =
-                document.querySelectorAll('input')
-
-              const name =
-                inputs[0].value
-
-              const phone =
-                inputs[1].value
-
-              const email =
-                inputs[2].value
-
-              const description =
-                document.querySelector('textarea').value
-
-              const message = `
-🚚 Neue Anfrage von Website
-
-👤 Name: ${name}
-
-📞 Telefon: ${phone}
-
-📧 Email: ${email}
-
-📦 Umzug:
-${description}
-`
-
-              await fetch(
-                `https://api.telegram.org/bot${TOKEN}/sendMessage`,
-                {
-                  method: 'POST',
-
-                  headers: {
-                    'Content-Type':
-                      'application/json',
-                  },
-
-                  body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                  }),
-                }
-              )
-
-              alert(
-                'Anfrage erfolgreich gesendet!'
-              )
-            }}
-          >
+          <button style={styles.submitBtn}>
             Anfrage senden
           </button>
-        </div>
+        </form>
       </section>
-
-      {/* FOOTER */}
-      <footer style={styles.footer}>
-        <h2 style={styles.footerLogo}>
-          Taskline Munich UG
-        </h2>
-
-        <p>📍 München, Deutschland</p>
-
-        <a
-          href="tel:+4917600000000"
-          style={styles.footerLink}
-        >
-          📞 +49 176 00000000
-        </a>
-
-        <a
-          href="mailto:info@taskline.de"
-          style={styles.footerLink}
-        >
-          📧 info@taskline.de
-        </a>
-
-        <a
-          href="https://wa.me/4917600000000"
-          target="_blank"
-          style={styles.whatsappBtn}
-        >
-          WhatsApp Kontakt
-        </a>
-
-        <p style={styles.copy}>
-          © 2026 Taskline Munich UG
-        </p>
-      </footer>
     </div>
-  )
+  );
 }
-
-const services = [
-  {
-    icon: '🚚',
-    title: 'Wohnungsumzug',
-    text:
-      'Schneller und sicherer Transport Ihrer Möbel.',
-  },
-
-  {
-    icon: '🏢',
-    title: 'Büroumzug',
-    text:
-      'Professionelle Firmenumzüge ohne Stress.',
-  },
-
-  {
-    icon: '🪑',
-    title: 'Möbelmontage',
-    text:
-      'Abbau und Aufbau Ihrer Möbel.',
-  },
-
-  {
-    icon: '📦',
-    title: 'Entrümpelung',
-    text:
-      'Schnelle Entrümpelung von Wohnungen.',
-  },
-]
 
 const styles = {
   page: {
-    background: '#020617',
-    color: 'white',
+    background: "#020617",
+    color: "white",
+    minHeight: "100vh",
+    fontFamily: "Arial",
+    overflowX: "hidden",
   },
 
-  nav: {
-    position: 'fixed',
+  navbar: {
+    position: "fixed",
+    width: "100%",
     top: 0,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '20px 40px',
-    background: 'rgba(0,0,0,0.7)',
-    backdropFilter: 'blur(10px)',
+    left: 0,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "20px 5%",
+    background: "rgba(0,0,0,0.6)",
+    backdropFilter: "blur(10px)",
     zIndex: 1000,
+    boxSizing: "border-box",
   },
 
   logo: {
-    color: '#f97316',
-    fontSize: 'clamp(24px,4vw,36px)',
-    fontWeight: 'bold',
+    color: "#f97316",
+    fontSize: "28px",
   },
 
   navLinks: {
-    display: 'flex',
-    gap: '25px',
+    display: "flex",
+    gap: "30px",
+    flexWrap: "wrap",
   },
 
   link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '18px',
+    color: "white",
+    textDecoration: "none",
+    fontSize: "18px",
   },
 
   hero: {
-    minHeight: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    padding: '140px 20px 100px',
-    position: 'relative',
-    overflow: 'hidden',
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "120px 20px 80px",
+    position: "relative",
     background:
-      'linear-gradient(135deg,#020617,#0f172a,#1e293b)',
+      "linear-gradient(to bottom right,#0f172a,#1e293b)",
   },
 
   overlay: {
-    position: 'absolute',
-    width: '600px',
-    height: '600px',
-    background: '#f97316',
-    borderRadius: '50%',
-    filter: 'blur(180px)',
-    opacity: 0.2,
+    position: "absolute",
+    inset: 0,
+    background:
+      "radial-gradient(circle,#f9731620,transparent)",
   },
 
   heroContent: {
-    position: 'relative',
-    zIndex: 2,
-    width: '100%',
-    maxWidth: '1200px',
+    position: "relative",
+    zIndex: 10,
+    maxWidth: "900px",
+    width: "100%",
   },
 
-  heroTitle: {
-    fontSize: 'clamp(50px,8vw,90px)',
-    color: '#f97316',
-    marginBottom: '20px',
-    fontWeight: 'bold',
+  title: {
+    fontSize: "clamp(42px,8vw,90px)",
+    color: "#f97316",
+    marginBottom: "20px",
   },
 
-  heroSubtitle: {
-    fontSize: 'clamp(24px,5vw,42px)',
-    marginBottom: '20px',
-    lineHeight: 1.3,
+  subtitle: {
+    fontSize: "clamp(28px,4vw,50px)",
+    lineHeight: "1.2",
+    marginBottom: "20px",
   },
 
-  heroText: {
-    fontSize: '20px',
-    color: '#cbd5e1',
-    marginBottom: '40px',
+  description: {
+    fontSize: "20px",
+    color: "#cbd5e1",
+    marginBottom: "40px",
   },
 
-  buttonGroup: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '20px',
-    flexWrap: 'wrap',
+  buttonBox: {
+    display: "flex",
+    gap: "20px",
+    justifyContent: "center",
+    flexWrap: "wrap",
   },
 
-  primaryBtn: {
-    background: '#f97316',
-    border: 'none',
-    color: 'white',
-    padding: '18px 35px',
-    borderRadius: '14px',
-    fontSize: '18px',
-    cursor: 'pointer',
+  orangeBtn: {
+    background: "#f97316",
+    color: "white",
+    padding: "18px 35px",
+    borderRadius: "15px",
+    textDecoration: "none",
+    fontWeight: "bold",
   },
 
-  secondaryBtn: {
-    background: 'transparent',
-    border: '2px solid white',
-    color: 'white',
-    padding: '18px 35px',
-    borderRadius: '14px',
-    fontSize: '18px',
-    cursor: 'pointer',
+  whiteBtn: {
+    border: "2px solid white",
+    color: "white",
+    padding: "18px 35px",
+    borderRadius: "15px",
+    textDecoration: "none",
+    fontWeight: "bold",
   },
 
-  servicesSection: {
-    background: 'white',
-    color: 'black',
-    padding: '100px 20px',
+  services: {
+    padding: "100px 20px",
   },
 
   sectionTitle: {
-    textAlign: 'center',
-    fontSize: 'clamp(36px,6vw,56px)',
-    color: '#3b82f6',
-    marginBottom: '60px',
+    textAlign: "center",
+    fontSize: "50px",
+    marginBottom: "60px",
+    color: "#f97316",
   },
 
-  cards: {
-    display: 'grid',
+  grid: {
+    display: "grid",
     gridTemplateColumns:
-      'repeat(auto-fit,minmax(250px,1fr))',
-    gap: '30px',
-    maxWidth: '1200px',
-    margin: '0 auto',
+      "repeat(auto-fit,minmax(250px,1fr))",
+    gap: "30px",
+    maxWidth: "1200px",
+    margin: "0 auto",
   },
 
   card: {
-    background: '#f8fafc',
-    padding: '40px 25px',
-    borderRadius: '20px',
-    textAlign: 'center',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+    background: "#111827",
+    padding: "40px",
+    borderRadius: "25px",
+    textAlign: "center",
+    transition: "0.3s",
   },
 
   icon: {
-    fontSize: '50px',
-    marginBottom: '20px',
+    fontSize: "55px",
+    marginBottom: "20px",
   },
 
-  cardTitle: {
-    fontSize: '30px',
-    color: '#f97316',
-    marginBottom: '15px',
+  reviewSection: {
+    padding: "100px 20px",
+    background: "#0f172a",
   },
 
-  cardText: {
-    color: '#334155',
-    lineHeight: 1.7,
-    fontSize: '17px',
+  reviewCard: {
+    background: "#111827",
+    padding: "35px",
+    borderRadius: "20px",
+    textAlign: "center",
   },
 
-  aboutSection: {
-    padding: '100px 20px',
+  stars: {
+    color: "#f97316",
+    fontSize: "28px",
+    marginBottom: "20px",
   },
 
-  sectionTitleDark: {
-    textAlign: 'center',
-    fontSize: 'clamp(36px,6vw,56px)',
-    marginBottom: '60px',
+  addressSection: {
+    padding: "100px 20px",
+    display: "flex",
+    justifyContent: "center",
   },
 
-  aboutGrid: {
-    display: 'grid',
-    gridTemplateColumns:
-      'repeat(auto-fit,minmax(250px,1fr))',
-    gap: '30px',
-    maxWidth: '1200px',
-    margin: '0 auto',
+  addressCard: {
+    background: "#111827",
+    padding: "50px",
+    borderRadius: "25px",
+    textAlign: "center",
+    width: "100%",
+    maxWidth: "600px",
   },
 
-  aboutCard: {
-    background: '#111827',
-    padding: '40px 25px',
-    borderRadius: '20px',
-    textAlign: 'center',
+  addressIcon: {
+    fontSize: "70px",
+    marginBottom: "20px",
   },
 
-  step: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    background: '#f97316',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '0 auto 20px',
-    fontSize: '24px',
-    fontWeight: 'bold',
+  addressTitle: {
+    fontSize: "42px",
+    marginBottom: "25px",
+    color: "#f97316",
   },
 
-  aboutTitle: {
-    fontSize: '28px',
-    marginBottom: '15px',
-    color: '#f97316',
+  contact: {
+    padding: "100px 20px",
   },
 
-  aboutText: {
-    color: '#cbd5e1',
-    lineHeight: 1.7,
-  },
-
-  contactSection: {
-    padding: '100px 20px',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-
-  contactBox: {
-    width: '100%',
-    maxWidth: '700px',
-    background: '#111827',
-    padding: '45px',
-    borderRadius: '25px',
-  },
-
-  contactTitle: {
-    textAlign: 'center',
-    fontSize: 'clamp(32px,5vw,48px)',
-    marginBottom: '30px',
+  form: {
+    maxWidth: "700px",
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
   },
 
   input: {
-    width: '100%',
-    padding: '18px',
-    marginBottom: '18px',
-    borderRadius: '12px',
-    border: 'none',
-    fontSize: '16px',
+    padding: "18px",
+    borderRadius: "12px",
+    border: "none",
+    fontSize: "18px",
   },
 
   textarea: {
-    width: '100%',
-    height: '140px',
-    padding: '18px',
-    borderRadius: '12px',
-    border: 'none',
-    resize: 'none',
-    marginBottom: '20px',
-    fontSize: '16px',
+    padding: "18px",
+    borderRadius: "12px",
+    border: "none",
+    minHeight: "150px",
+    fontSize: "18px",
   },
 
-  contactBtn: {
-    width: '100%',
-    background: '#f97316',
-    border: 'none',
-    color: 'white',
-    padding: '18px',
-    borderRadius: '14px',
-    fontSize: '18px',
-    cursor: 'pointer',
+  submitBtn: {
+    background: "#f97316",
+    color: "white",
+    border: "none",
+    padding: "18px",
+    borderRadius: "12px",
+    fontSize: "20px",
+    cursor: "pointer",
   },
-
-  footer: {
-    background: '#000',
-    textAlign: 'center',
-    padding: '60px 20px',
-  },
-
-  footerLogo: {
-    color: '#f97316',
-    fontSize: '40px',
-    marginBottom: '20px',
-  },
-
-  footerLink: {
-    display: 'block',
-    color: '#cbd5e1',
-    textDecoration: 'none',
-    marginTop: '10px',
-  },
-
-  whatsappBtn: {
-    display: 'inline-block',
-    marginTop: '25px',
-    background: '#22c55e',
-    color: 'white',
-    padding: '15px 30px',
-    borderRadius: '12px',
-    textDecoration: 'none',
-  },
-
-  copy: {
-    marginTop: '30px',
-    color: '#64748b',
-  },
-}
+};
