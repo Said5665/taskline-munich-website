@@ -56,7 +56,6 @@ export default function App() {
 
   return (
     <div style={styles.page}>
-      {/* GLOW */}
       <div style={styles.backgroundGlow}></div>
 
       {/* NAVBAR */}
@@ -334,7 +333,8 @@ export default function App() {
 
 const styles = {
   page: {
-    background: "#020617",
+    background:
+      "linear-gradient(to bottom,#020617,#0f172a)",
     color: "white",
     minHeight: "100vh",
     fontFamily: "Arial",
@@ -344,49 +344,49 @@ const styles = {
 
   backgroundGlow: {
     position: "fixed",
-    width: "700px",
-    height: "700px",
+    width: "900px",
+    height: "900px",
     background:
-      "radial-gradient(circle,#f9731630,transparent)",
-    top: "-200px",
-    left: "-200px",
-    filter: "blur(120px)",
+      "radial-gradient(circle,#f9731640,transparent)",
+    top: "-300px",
+    left: "-300px",
+    filter: "blur(140px)",
     zIndex: 0,
-    animation: "pulse 6s infinite",
+    animation: "pulse 8s infinite",
   },
 
   navbar: {
     position: "fixed",
     top: 0,
     width: "100%",
-    padding: "20px 5%",
+    padding: "25px 5%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     background: "rgba(0,0,0,0.5)",
-    backdropFilter: "blur(15px)",
+    backdropFilter: "blur(20px)",
     zIndex: 1000,
     boxSizing: "border-box",
     flexWrap: "wrap",
-    gap: "15px",
+    gap: "20px",
   },
 
   logo: {
     color: "#f97316",
-    fontSize: "28px",
-    fontWeight: "bold",
+    fontSize: "32px",
+    fontWeight: "900",
   },
 
   navLinks: {
     display: "flex",
-    gap: "25px",
+    gap: "30px",
     flexWrap: "wrap",
   },
 
   link: {
     color: "white",
     textDecoration: "none",
-    fontSize: "18px",
+    fontSize: "20px",
   },
 
   hero: {
@@ -394,211 +394,221 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "120px 20px",
+    padding: "140px 40px 80px",
     textAlign: "center",
+    width: "100%",
+    boxSizing: "border-box",
   },
 
   heroContent: {
     transition: "1.5s",
     width: "100%",
-    maxWidth: "1200px",
+    maxWidth: "1700px",
     position: "relative",
     zIndex: 2,
+    display: "flex",
+    justifyContent: "center",
   },
 
   glassCard: {
     background: "rgba(255,255,255,0.05)",
     border: "1px solid rgba(255,255,255,0.1)",
-    padding: "60px 25px",
-    borderRadius: "35px",
-    backdropFilter: "blur(20px)",
+    padding: "90px 60px",
+    borderRadius: "40px",
+    backdropFilter: "blur(25px)",
     boxShadow:
-      "0 0 60px rgba(249,115,22,0.2)",
+      "0 0 80px rgba(249,115,22,0.25)",
     width: "100%",
+    maxWidth: "1400px",
+    minHeight: "500px",
     overflow: "hidden",
     boxSizing: "border-box",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   truck: {
-    fontSize: "80px",
+    fontSize: "90px",
     marginBottom: "20px",
     animation:
       "float 3s infinite ease-in-out",
   },
 
   title: {
-    fontSize: "clamp(40px,6vw,90px)",
+    fontSize: "clamp(55px,7vw,120px)",
     color: "#f97316",
     marginBottom: "20px",
     fontWeight: "900",
     lineHeight: "1",
     wordBreak: "break-word",
     textShadow:
-      "0 0 25px rgba(249,115,22,0.7)",
+      "0 0 40px rgba(249,115,22,0.8)",
   },
 
   subtitle: {
-    fontSize: "clamp(22px,3vw,50px)",
-    marginBottom: "20px",
+    fontSize: "clamp(28px,3vw,65px)",
+    marginBottom: "25px",
     lineHeight: "1.2",
-    wordBreak: "break-word",
+    maxWidth: "1000px",
   },
 
   description: {
     color: "#cbd5e1",
-    fontSize: "20px",
-    marginBottom: "40px",
+    fontSize: "24px",
+    marginBottom: "50px",
   },
 
   buttonBox: {
     display: "flex",
     justifyContent: "center",
-    gap: "20px",
+    gap: "25px",
     flexWrap: "wrap",
   },
 
   orangeBtn: {
     background: "#f97316",
-    padding: "18px 35px",
-    borderRadius: "15px",
+    padding: "20px 40px",
+    borderRadius: "18px",
     color: "white",
     textDecoration: "none",
     fontWeight: "bold",
+    fontSize: "20px",
     boxShadow:
-      "0 0 25px rgba(249,115,22,0.5)",
-    transition: "0.3s",
+      "0 0 30px rgba(249,115,22,0.5)",
   },
 
   whiteBtn: {
     border: "2px solid white",
-    padding: "18px 35px",
-    borderRadius: "15px",
+    padding: "20px 40px",
+    borderRadius: "18px",
     color: "white",
     textDecoration: "none",
     fontWeight: "bold",
+    fontSize: "20px",
   },
 
   services: {
-    padding: "100px 20px",
+    padding: "120px 20px",
   },
 
   sectionTitle: {
     textAlign: "center",
-    fontSize: "50px",
-    marginBottom: "60px",
+    fontSize: "60px",
+    marginBottom: "70px",
     color: "#f97316",
   },
 
   grid: {
     display: "grid",
     gridTemplateColumns:
-      "repeat(auto-fit,minmax(250px,1fr))",
-    gap: "30px",
-    maxWidth: "1200px",
+      "repeat(auto-fit,minmax(280px,1fr))",
+    gap: "35px",
+    maxWidth: "1400px",
     margin: "0 auto",
   },
 
   card: {
     background: "#111827",
-    padding: "40px",
-    borderRadius: "25px",
+    padding: "45px",
+    borderRadius: "30px",
     textAlign: "center",
     transition: "0.4s",
-    cursor: "pointer",
   },
 
   icon: {
-    fontSize: "60px",
-    marginBottom: "20px",
+    fontSize: "70px",
+    marginBottom: "25px",
     animation:
       "float 3s infinite ease-in-out",
   },
 
   reviewSection: {
-    padding: "100px 20px",
+    padding: "120px 20px",
     background: "#0f172a",
   },
 
   reviewCard: {
     background: "#111827",
-    padding: "35px",
-    borderRadius: "20px",
+    padding: "40px",
+    borderRadius: "25px",
     textAlign: "center",
   },
 
   stars: {
     color: "#f97316",
-    fontSize: "28px",
-    marginBottom: "20px",
+    fontSize: "32px",
+    marginBottom: "25px",
     animation:
       "pulseStars 2s infinite",
   },
 
   addressSection: {
-    padding: "100px 20px",
+    padding: "120px 20px",
     display: "flex",
     justifyContent: "center",
   },
 
   addressCard: {
     background: "#111827",
-    padding: "50px",
-    borderRadius: "25px",
+    padding: "60px",
+    borderRadius: "30px",
     textAlign: "center",
     width: "100%",
-    maxWidth: "600px",
+    maxWidth: "700px",
   },
 
   addressIcon: {
-    fontSize: "70px",
-    marginBottom: "20px",
+    fontSize: "90px",
+    marginBottom: "25px",
     animation:
       "float 2.5s infinite ease-in-out",
   },
 
   addressTitle: {
-    fontSize: "42px",
+    fontSize: "48px",
     marginBottom: "25px",
     color: "#f97316",
   },
 
   contact: {
-    padding: "100px 20px",
+    padding: "120px 20px",
   },
 
   form: {
-    maxWidth: "700px",
+    maxWidth: "800px",
     margin: "0 auto",
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "25px",
   },
 
   input: {
-    padding: "18px",
-    borderRadius: "12px",
+    padding: "20px",
+    borderRadius: "15px",
     border: "none",
-    fontSize: "18px",
+    fontSize: "20px",
   },
 
   textarea: {
-    padding: "18px",
-    borderRadius: "12px",
+    padding: "20px",
+    borderRadius: "15px",
     border: "none",
-    minHeight: "150px",
-    fontSize: "18px",
+    minHeight: "180px",
+    fontSize: "20px",
   },
 
   submitBtn: {
     background: "#f97316",
     color: "white",
     border: "none",
-    padding: "18px",
-    borderRadius: "12px",
-    fontSize: "20px",
+    padding: "20px",
+    borderRadius: "15px",
+    fontSize: "22px",
     cursor: "pointer",
     boxShadow:
-      "0 0 25px rgba(249,115,22,0.4)",
+      "0 0 30px rgba(249,115,22,0.4)",
   },
 };
 
