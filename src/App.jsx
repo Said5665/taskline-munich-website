@@ -1,341 +1,238 @@
-import React from "react";
-
-export default function App() {
+export default function LuxuryUmzugLanding() {
   return (
-    <div style={styles.page}>
-      <a
-        href="https://wa.me/4917612345678"
-        target="_blank"
-        style={styles.whatsapp}
-      >
-        💬
-      </a>
-
-      <nav style={styles.navbar}>
-        <h1 style={styles.logo}>
-          Taskline Munich UG
-        </h1>
-
-        <div style={styles.links}>
-          <a href="#services" style={styles.link}>
-            Leistungen
-          </a>
-
-          <a href="#reviews" style={styles.link}>
-            Bewertungen
-          </a>
-
-          <a href="#contact" style={styles.link}>
-            Kontakt
-          </a>
-        </div>
-      </nav>
-
-      <section style={styles.hero}>
-        <div style={styles.overlay}></div>
-
-        <div style={styles.heroBox}>
-          <div style={styles.truck}>🚚</div>
-
-          <h1 style={styles.title}>
-            Premium Umzugsservice
+    <div className="min-h-screen bg-[#0b1120] text-white overflow-x-hidden">
+      {/* Navbar */}
+      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/30 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+          <h1 className="text-2xl md:text-3xl font-black tracking-wide text-[#c4a574]">
+            Taskline Munich UG
           </h1>
 
-          <h2 style={styles.subtitle}>
-            Taskline Munich UG
-          </h2>
+          <nav className="hidden md:flex gap-8 text-sm uppercase tracking-wide">
+            <a href="#services" className="hover:text-[#c4a574] transition-all">Leistungen</a>
+            <a href="#about" className="hover:text-[#c4a574] transition-all">Warum wir</a>
+            <a href="#reviews" className="hover:text-[#c4a574] transition-all">Bewertungen</a>
+            <a href="#contact" className="hover:text-[#c4a574] transition-all">Kontakt</a>
+          </nav>
+        </div>
+      </header>
 
-          <p style={styles.description}>
-            Professionelle Umzüge in ganz Deutschland.
-            Schnell • Sicher • Premium.
-          </p>
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#c4a57422,transparent_40%)]" />
 
-          <div style={styles.buttons}>
-            <a href="#contact" style={styles.primaryBtn}>
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-6xl w-full bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[40px] p-8 md:p-16 shadow-2xl">
+          <div className="text-center">
+            <div className="text-6xl md:text-8xl mb-6 animate-bounce">
+              🚚
+            </div>
+
+            <p className="uppercase tracking-[6px] text-[#c4a574] text-sm mb-5">
+              Premium Umzugsservice Deutschland
+            </p>
+
+            <h1 className="text-5xl md:text-8xl font-black leading-none mb-8">
+              Elite Moving
+              <br />
+              Experience
+            </h1>
+
+            <p className="text-slate-300 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
+              Professionelle Premium-Umzüge für Wohnungen,
+              Büros und Unternehmen in ganz Deutschland.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-5">
+              <a
+                href="#contact"
+                className="bg-[#c4a574] text-[#0b1120] px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all shadow-[0_0_40px_rgba(196,165,116,0.4)]"
+              >
+                Kostenloses Angebot
+              </a>
+
+              <a
+                href="https://wa.me/4917612345678"
+                className="border border-white/20 px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all"
+              >
+                WhatsApp
+              </a>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                <h3 className="text-5xl font-black text-[#c4a574] mb-2">500+</h3>
+                <p className="text-slate-300">Zufriedene Kunden</p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                <h3 className="text-5xl font-black text-[#c4a574] mb-2">24/7</h3>
+                <p className="text-slate-300">Premium Support</p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                <h3 className="text-5xl font-black text-[#c4a574] mb-2">100%</h3>
+                <p className="text-slate-300">Versichert</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <p className="uppercase tracking-[5px] text-[#c4a574] mb-4">Services</p>
+            <h2 className="text-5xl md:text-7xl font-black">
+              Unsere Leistungen
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {[
+              ["🏠", "Wohnungsumzug"],
+              ["🏢", "Büroumzug"],
+              ["🛠", "Möbelmontage"],
+              ["🧹", "Entrümpelung"],
+            ].map(([icon, title]) => (
+              <div
+                key={title}
+                className="group bg-white/5 border border-white/10 rounded-[32px] p-10 hover:-translate-y-3 hover:border-[#c4a574]/40 hover:shadow-[0_0_60px_rgba(196,165,116,0.15)] transition-all duration-500"
+              >
+                <div className="text-6xl mb-6 group-hover:scale-110 transition-all">
+                  {icon}
+                </div>
+
+                <h3 className="text-2xl font-bold mb-4">
+                  {title}
+                </h3>
+
+                <p className="text-slate-300 leading-relaxed">
+                  Premium Qualität und professioneller Service für Ihren Umzug.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why us */}
+      <section id="about" className="py-28 px-6 bg-white/[0.03] border-y border-white/5">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="uppercase tracking-[5px] text-[#c4a574] mb-5">Warum wir</p>
+
+            <h2 className="text-5xl md:text-7xl font-black leading-tight mb-8">
+              Deutsche Premium Standards
+            </h2>
+
+            <p className="text-slate-300 text-lg leading-relaxed mb-10">
+              Taskline Munich UG bietet moderne Premium-Umzüge mit höchster Qualität,
+              Versicherungsschutz und professionellem Kundenservice.
+            </p>
+
+            <div className="space-y-5">
+              {[
+                "DSGVO Konform",
+                "Vollständig versichert",
+                "Festpreis Garantie",
+                "Deutschlandweit verfügbar",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5">
+                  <div className="w-12 h-12 rounded-xl bg-[#c4a574] text-[#0b1120] flex items-center justify-center font-black">
+                    ✓
+                  </div>
+
+                  <p className="text-lg font-medium">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute -inset-10 bg-[#c4a574]/10 blur-3xl rounded-full" />
+
+            <img
+              src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2070&auto=format&fit=crop"
+              className="relative rounded-[40px] border border-white/10 shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section id="reviews" className="py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <p className="uppercase tracking-[5px] text-[#c4a574] mb-4">Reviews</p>
+            <h2 className="text-5xl md:text-7xl font-black">
+              Kundenbewertungen
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1,2,3].map((item) => (
+              <div key={item} className="bg-white/5 border border-white/10 rounded-[32px] p-10 backdrop-blur-xl">
+                <div className="text-[#c4a574] text-3xl mb-5">★★★★★</div>
+
+                <p className="text-slate-300 leading-relaxed mb-8 text-lg">
+                  Sehr professioneller Service. Schnell,
+                  modern und zuverlässig.
+                </p>
+
+                <div>
+                  <h4 className="font-bold text-xl">Michael Bauer</h4>
+                  <p className="text-slate-400">München</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-28 px-6 bg-white/[0.03] border-t border-white/5">
+        <div className="max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-[40px] p-8 md:p-16 backdrop-blur-2xl">
+          <div className="text-center mb-14">
+            <p className="uppercase tracking-[5px] text-[#c4a574] mb-4">Kontakt</p>
+            <h2 className="text-5xl md:text-7xl font-black mb-6">
               Kostenloses Angebot
-            </a>
+            </h2>
 
+            <p className="text-slate-300 text-lg">
+              Schreiben Sie uns direkt per WhatsApp.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <input placeholder="Name" className="bg-[#111827] border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-[#c4a574]" />
+            <input placeholder="Telefon" className="bg-[#111827] border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-[#c4a574]" />
+            <input placeholder="E-Mail" className="bg-[#111827] border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-[#c4a574] md:col-span-2" />
+            <textarea placeholder="Nachricht" rows={5} className="bg-[#111827] border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-[#c4a574] md:col-span-2" />
+          </div>
+
+          <div className="flex justify-center mt-10">
             <a
               href="https://wa.me/4917612345678"
-              style={styles.secondaryBtn}
-              target="_blank"
+              className="bg-[#c4a574] text-[#0b1120] px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-[0_0_40px_rgba(196,165,116,0.35)]"
             >
-              WhatsApp
+              Anfrage senden
             </a>
           </div>
         </div>
       </section>
 
-      <section id="services" style={styles.section}>
-        <h2 style={styles.sectionTitle}>
-          Unsere Leistungen
-        </h2>
-
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.icon}>🏠</div>
-            <h3>Wohnungsumzug</h3>
-            <p>Professioneller privater Umzug.</p>
-          </div>
-
-          <div style={styles.card}>
-            <div style={styles.icon}>🏢</div>
-            <h3>Büroumzug</h3>
-            <p>Schnelle Firmenumzüge.</p>
-          </div>
-
-          <div style={styles.card}>
-            <div style={styles.icon}>🛡️</div>
-            <h3>Versicherung</h3>
-            <p>Ihr Umzug ist geschützt.</p>
-          </div>
-        </div>
-      </section>
-
-      <section style={styles.sectionDark}>
-        <h2 style={styles.sectionTitle}>
-          Warum wir?
-        </h2>
-
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.icon}>⭐</div>
-            <h3>Premium Qualität</h3>
-          </div>
-
-          <div style={styles.card}>
-            <div style={styles.icon}>⏱️</div>
-            <h3>Pünktlichkeit</h3>
-          </div>
-
-          <div style={styles.card}>
-            <div style={styles.icon}>🚚</div>
-            <h3>Deutschlandweit</h3>
-          </div>
-        </div>
-      </section>
-
-      <section id="reviews" style={styles.section}>
-        <h2 style={styles.sectionTitle}>
-          Kundenbewertungen
-        </h2>
-
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <h3>★★★★★</h3>
-            <p>
-              Sehr professionell und freundlich.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h3>★★★★★</h3>
-            <p>
-              Beste Umzugsfirma in München.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h3>★★★★★</h3>
-            <p>
-              Schnell und zuverlässig.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" style={styles.sectionDark}>
-        <h2 style={styles.sectionTitle}>
-          Kontakt
-        </h2>
-
-        <div style={styles.contactBox}>
-          <p>📍 München, Deutschland</p>
-          <p>📞 +49 176 12345678</p>
-          <p>✉️ info@taskline-munich.de</p>
-        </div>
-      </section>
+      {/* Footer */}
+      <footer className="border-t border-white/5 py-10 px-6 text-center text-slate-400">
+        <p>© 2026 Taskline Munich UG — Premium Umzugsservice Deutschland</p>
+      </footer>
     </div>
   );
 }
-
-const styles = {
-  page: {
-    background: "#0b1120",
-    color: "#f8fafc",
-    minHeight: "100vh",
-    fontFamily: "Inter, Arial",
-    overflowX: "hidden",
-  },
-
-  navbar: {
-    position: "fixed",
-    top: 0,
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "22px 6vw",
-    background: "rgba(10,15,30,0.75)",
-    backdropFilter: "blur(18px)",
-    zIndex: 999,
-    boxSizing: "border-box",
-    flexWrap: "wrap",
-  },
-
-  logo: {
-    color: "#c4a574",
-    fontSize: "clamp(24px,2vw,36px)",
-  },
-
-  links: {
-    display: "flex",
-    gap: "25px",
-    flexWrap: "wrap",
-  },
-
-  link: {
-    color: "white",
-    textDecoration: "none",
-  },
-
-  hero: {
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "150px 5vw 100px",
-    position: "relative",
-    textAlign: "center",
-    background:
-      "linear-gradient(to bottom right,#0b1120,#111827)",
-  },
-
-  overlay: {
-    position: "absolute",
-    inset: 0,
-    background:
-      "radial-gradient(circle,#c4a57422,transparent)",
-  },
-
-  heroBox: {
-    position: "relative",
-    zIndex: 2,
-    background: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    padding: "clamp(35px,5vw,80px)",
-    borderRadius: "40px",
-    maxWidth: "1200px",
-    width: "100%",
-    backdropFilter: "blur(25px)",
-  },
-
-  truck: {
-    fontSize: "80px",
-    marginBottom: "20px",
-  },
-
-  title: {
-    fontSize: "clamp(40px,7vw,100px)",
-    color: "#c4a574",
-    lineHeight: 1,
-  },
-
-  subtitle: {
-    fontSize: "clamp(24px,3vw,54px)",
-    marginTop: "20px",
-  },
-
-  description: {
-    color: "#cbd5e1",
-    marginTop: "25px",
-    fontSize: "18px",
-  },
-
-  buttons: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-    marginTop: "40px",
-    flexWrap: "wrap",
-  },
-
-  primaryBtn: {
-    background: "#c4a574",
-    color: "#0b1120",
-    padding: "18px 34px",
-    borderRadius: "16px",
-    textDecoration: "none",
-    fontWeight: "700",
-  },
-
-  secondaryBtn: {
-    border: "1px solid rgba(255,255,255,0.25)",
-    color: "white",
-    padding: "18px 34px",
-    borderRadius: "16px",
-    textDecoration: "none",
-  },
-
-  section: {
-    padding: "110px 5vw",
-  },
-
-  sectionDark: {
-    padding: "110px 5vw",
-    background: "#111827",
-  },
-
-  sectionTitle: {
-    textAlign: "center",
-    color: "#c4a574",
-    fontSize: "clamp(32px,5vw,65px)",
-    marginBottom: "60px",
-  },
-
-  grid: {
-    display: "grid",
-    gridTemplateColumns:
-      "repeat(auto-fit,minmax(280px,1fr))",
-    gap: "30px",
-    maxWidth: "1400px",
-    margin: "0 auto",
-  },
-
-  card: {
-    background: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    borderRadius: "28px",
-    padding: "40px",
-    backdropFilter: "blur(18px)",
-    transition: "0.4s",
-  },
-
-  icon: {
-    fontSize: "55px",
-    marginBottom: "20px",
-  },
-
-  contactBox: {
-    textAlign: "center",
-    lineHeight: 2,
-    fontSize: "20px",
-  },
-
-  whatsapp: {
-    position: "fixed",
-    right: "24px",
-    bottom: "24px",
-    width: "72px",
-    height: "72px",
-    borderRadius: "50%",
-    background: "#25D366",
-    color: "white",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    textDecoration: "none",
-    fontSize: "34px",
-    zIndex: 9999,
-  },
-};
